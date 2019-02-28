@@ -36,6 +36,7 @@ export class AppComponent implements OnInit {
   }
 
   async fetchImage(){
+    this.galleryImages = [];
     var d = new Date(this.dateCapture);
     this.loading = true;
     console.log('capture date..' + this.dateCapture); 
