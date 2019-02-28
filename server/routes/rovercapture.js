@@ -57,7 +57,13 @@ router.post('/rover/capture', (req, res, next) => {
                         var photos = responseBody.photos;
                         var images = [];
                         var dir = './dist/tmp/' + dateProvided;
-                                    
+                        
+                        if (!fs.existsSync('./dist')){
+                            fs.mkdirSync('./dist');
+                        }
+                        if (!fs.existsSync('./dist/tmp/')){
+                            fs.mkdirSync('./dist/tmp/');
+                        }
                         if (!fs.existsSync(dir)){
                             fs.mkdirSync(dir);
                             async.each(photos, function (photo, callback) {

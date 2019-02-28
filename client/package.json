@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "concurrently \"ng serve --host 0.0.0.0\" \"node ../server/server.js\"", 
+    "start": "concurrently \"ng serve --host 0.0.0.0\" \"cd .. && cd ./server && node ./server.js\"",
+    "run": "ng serve --open | nodemon node/",
     "ng": "ng",
     "build": "ng build --prod",
     "test": "ng test",
