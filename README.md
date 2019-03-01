@@ -23,10 +23,8 @@ $ npm -v
 ##### Install npm libraries required
 
 ```
-$ npm i @angular/cli
+$ npm i -g @angular/cli
 ```
-
-##### Install npm libraries required
 
 Go inside "client folder" and execute the command :
 
