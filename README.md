@@ -26,7 +26,7 @@ $ npm -v
 $ npm i -g @angular/cli
 ```
 
-If you are running on Windows, double click the file "script.bat" for the installation of libraries and start the application.
+If you are running on Windows, double click the file "script.bat" for the installation of libraries and to start the application automatically.
 
 Or on Mac or Linux:
 
