@@ -52,3 +52,10 @@ $ npm start
 ```
 
 open your browser on [http://localhost:4200/](http://localhost:4200/)
+
+## Docker Image
+
+```
+$ docker pull dominicespiritu/marsrover
+$ docker run -p 3000:3000 dominicespiritu/marsrover
+```
