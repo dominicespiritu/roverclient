@@ -1,4 +1,5 @@
-FROM node:8.9.4
+#FROM node:8.9.4
+FROM node:11.10.0
 
 RUN mkdir /app
 RUN npm i npm@latest -g

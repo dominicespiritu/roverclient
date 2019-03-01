@@ -57,9 +57,9 @@ export class AppComponent implements OnInit {
           for(var i=0;i<this.dataResponse['data']['images'].length;i++){
             this.galleryImages.push(
               {
-                'small': 'http://localhost:3000/tmp/' + this.dataResponse['data']['folder'] + '/' + this.dataResponse['data']['images'][i],
-                'medium': 'http://localhost:3000/tmp/' + this.dataResponse['data']['folder'] + '/' + this.dataResponse['data']['images'][i],
-                'big': 'http://localhost:3000/tmp/' + this.dataResponse['data']['folder'] + '/' + this.dataResponse['data']['images'][i]
+                'small': environment.nodeHost + '/tmp/' + this.dataResponse['data']['folder'] + '/' + this.dataResponse['data']['images'][i],
+                'medium': environment.nodeHost + '/tmp/' + this.dataResponse['data']['folder'] + '/' + this.dataResponse['data']['images'][i],
+                'big': environment.nodeHost + '/tmp/' + this.dataResponse['data']['folder'] + '/' + this.dataResponse['data']['images'][i]
               }
             );
           }
