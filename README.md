@@ -1,7 +1,7 @@
 
-# Project Title
+# Mars Rover Client
 
-One Paragraph of project description goes here
+This project uses NASA API for Mars Rover
 
 ## Getting Started
 
@@ -9,7 +9,8 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+Download Node.js [here](https://nodejs.org/en/download/)
+Install after download
 
 ```
 Give examples
