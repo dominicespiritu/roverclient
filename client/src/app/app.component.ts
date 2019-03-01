@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from 'environments/environment';
 import { RestApiService } from 'app/rest-api.service';
-
+import { ActivatedRoute } from '@angular/router';
 import { NgxGalleryOptions, NgxGalleryImage } from 'ngx-gallery';
-
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -22,9 +22,12 @@ export class AppComponent implements OnInit {
   loading = false;
   constructor(
     private rest: RestApiService,
+    private route: ActivatedRoute,
+    private location: Location
   ) { }
 
   ngOnInit() {
+    console.log(location);
     this.galleryOptions = [
       {
         width: '600px',
@@ -35,7 +38,7 @@ export class AppComponent implements OnInit {
     this.galleryImages = [];
   }
 
-  async fetchImage(){
+  async fetchImage(){console.log(location.protocol + '//' + location.hostname + ':' + location.port);
     this.galleryImages = [];
     var d = new Date(this.dateCapture);
     this.loading = true;
@@ -49,17 +52,18 @@ export class AppComponent implements OnInit {
       try{
         this.dataResponse = {};
         const response = await this.rest.post(
-          environment.nodeHost + `/api/rover/capture`,
+          location.protocol + '//' + location.hostname + ':3000' + `/api/rover/capture`,
           { 'date': this.dateCapture }
         );
         this.dataResponse = response;
         if(Array.isArray(this.dataResponse['data']['images'])){
           for(var i=0;i<this.dataResponse['data']['images'].length;i++){
+            
             this.galleryImages.push(
               {
-                'small': environment.nodeHost + '/tmp/' + this.dataResponse['data']['folder'] + '/' + this.dataResponse['data']['images'][i],
-                'medium': environment.nodeHost + '/tmp/' + this.dataResponse['data']['folder'] + '/' + this.dataResponse['data']['images'][i],
-                'big': environment.nodeHost + '/tmp/' + this.dataResponse['data']['folder'] + '/' + this.dataResponse['data']['images'][i]
+                'small': location.protocol + '//' + location.hostname + ':3000' + '/tmp/' + this.dataResponse['data']['folder'] + '/' + this.dataResponse['data']['images'][i],
+                'medium': location.protocol + '//' + location.hostname + ':3000' + '/tmp/' + this.dataResponse['data']['folder'] + '/' + this.dataResponse['data']['images'][i],
+                'big': location.protocol + '//' + location.hostname + ':3000' + '/tmp/' + this.dataResponse['data']['folder'] + '/' + this.dataResponse['data']['images'][i]
               }
             );
           }

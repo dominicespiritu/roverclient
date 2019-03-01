@@ -7,6 +7,8 @@ import { RestApiService } from './rest-api.service';
 import { DataService} from './data.service';
 import { HttpClientModule } from '@angular/common/http'
 
+import { RouterModule } from '@angular/router';
+
 import { NgxGalleryModule } from 'ngx-gallery';
 
 @NgModule({
@@ -17,8 +19,8 @@ import { NgxGalleryModule } from 'ngx-gallery';
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    NgxGalleryModule
-    
+    NgxGalleryModule,
+    RouterModule.forRoot([])
   ],
   providers: [
     RestApiService,
