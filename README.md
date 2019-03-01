@@ -22,6 +22,11 @@ $ npm -v
 
 ##### Install npm libraries required
 
+
+If you are running on Windows, double click the file "script.bat" for the installation of libraries and start the application.
+
+Or on Mac or Linux:
+
 ```
 $ npm i -g @angular/cli
 ```
@@ -32,7 +37,7 @@ Go inside "client folder" and execute the command :
 $ npm i
 ```
 
-Go inside "client folder" and execute the command :
+Go inside "server folder" and execute the command :
 
 ```
 $ npm i
