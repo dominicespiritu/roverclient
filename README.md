@@ -10,20 +10,14 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisites
 
 Download Node.js [here](https://nodejs.org/en/download/)
+<br />
 Install after download
+<br />
+After Installing node.js, test if the installation is successful on your terminal.
 
 ```
-Give examples
-```
-
-### Installing
-
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
-```
-Give the example
+$ node -v
+$ npm -v
 ```
 
 And repeat
