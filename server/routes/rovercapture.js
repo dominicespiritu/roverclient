@@ -12,6 +12,24 @@ const config = require('../config');
 
 const async = require('async');
 
+
+
+const multer = require('multer');
+const storage = multer.diskStorage({
+  destination: 'uploads/',
+  filename : function (req, file, cb) {
+    console.log(file.mimetype);
+    var fExtension = file.mimetype.split('\/');
+    cb(null, Date.now() + '.' + fExtension[1]); //Appending .jpg
+  }
+}); 
+var upload = multer({ storage: storage });
+
+router.post('/upload', upload.single('files'), (req, res, next) => {
+    console.log('uploaded file.');
+    res.json({success:true});
+});
+
 router.post('/rover/capture', (req, res, next) => {
 
     if(null == req.body.date || req.body.date == ''){

@@ -21,6 +21,10 @@ export class RestApiService {
     return this.http.post(link, body, { headers: this.getHeaders() }).toPromise();
   }
 
+  upload(link: string, body: any){
+    return this.http.post(link, body, { headers: this.getHeaders() });
+  }
+  
   search(link: string, body: any) {
     // if (term.length < 3) {
     //   return of([]);

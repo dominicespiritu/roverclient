@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'environments/environment';
 import { RestApiService } from 'app/rest-api.service';
 import { ActivatedRoute } from '@angular/router';
@@ -20,11 +21,15 @@ export class AppComponent implements OnInit {
   errorMessage = "";
   dataResponse: any;
   loading = false;
+  file: any;
   constructor(
     private rest: RestApiService,
     private route: ActivatedRoute,
-    private location: Location
-  ) { }
+    private location: Location,
+    private http: HttpClient
+  ) { 
+    this.file = "";
+  }
 
   ngOnInit() {
     console.log(location);
@@ -38,7 +43,41 @@ export class AppComponent implements OnInit {
     this.galleryImages = [];
   }
 
-  async fetchImage(){console.log(location.protocol + '//' + location.hostname + ':' + location.port);
+  onFileChanged(event: any) {
+    this.file = event.target.files;
+    // console.log(event.target);
+  }
+
+   onUpload() {
+    const formData = new FormData();
+    for (const file of this.file) {
+      // console.log(file.name);
+      formData.append('files', file, file.name);
+    }
+    // console.log(formData.getAll('files')); 
+    // formData.append('name', this.file, this.file.name);
+    // console.log(formData);
+    // this.http.post('http://localhost:3000/api/upload', formData).subscribe(x => {
+    //   console.log(x);
+    //   console.log('file uploaded...');
+    // });
+
+    this.http.post('http://localhost:3000/api/upload', formData)
+    .subscribe(
+      // (r)=>{console.log('got r', r)}
+      data => {
+        console.log(data); 
+      },
+      error => {
+          console.log(error);
+      }
+    );
+
+    
+  }
+
+  async fetchImage(){
+    console.log(location.protocol + '//' + location.hostname + ':' + location.port);
     this.galleryImages = [];
     var d = new Date(this.dateCapture);
     this.loading = true;

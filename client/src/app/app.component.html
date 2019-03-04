@@ -9,6 +9,20 @@
 
   <br/>
   <div class="mt-3">
+    <form action="/upload" enctype="multipart/form-data" method="post">
+    <label class="image-upload-container btn btn-bwm">
+      <span>Select Image</span>
+      <input type="file" name="file" id="file" (change)="onFileChanged($event)" />
+
+      <!-- <input #imageInput
+              type="file"
+              accept="image/*"
+              (change)="processFile(imageInput)"> -->
+    </label>
+    <input type="button" value="Upload" (click)="onUpload()">
+    </form>
+    
+    <br>
     <!-- <input type="text" [(ngModel)]="name">
     <p>{{name}}</p> -->
     <label for="dateCapture">Select Date Captured:</label>
