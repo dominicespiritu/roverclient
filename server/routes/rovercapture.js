@@ -12,8 +12,6 @@ const config = require('../config');
 
 const async = require('async');
 
-
-
 const multer = require('multer');
 const storage = multer.diskStorage({
   destination: 'uploads/',
@@ -27,7 +25,10 @@ var upload = multer({ storage: storage });
 
 router.post('/upload', upload.single('files'), (req, res, next) => {
     console.log('uploaded file.');
-    res.json({success:true});
+    res.json({
+        success:true,
+        message: "Success uploading file."
+    });
 });
 
 router.post('/rover/capture', (req, res, next) => {

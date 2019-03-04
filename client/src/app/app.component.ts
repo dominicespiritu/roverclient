@@ -5,6 +5,7 @@ import { RestApiService } from 'app/rest-api.service';
 import { ActivatedRoute } from '@angular/router';
 import { NgxGalleryOptions, NgxGalleryImage } from 'ngx-gallery';
 import { Location } from '@angular/common';
+import { exists } from 'fs';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -49,31 +50,42 @@ export class AppComponent implements OnInit {
   }
 
    onUpload() {
-    const formData = new FormData();
-    for (const file of this.file) {
-      // console.log(file.name);
-      formData.append('files', file, file.name);
-    }
-    // console.log(formData.getAll('files')); 
-    // formData.append('name', this.file, this.file.name);
-    // console.log(formData);
-    // this.http.post('http://localhost:3000/api/upload', formData).subscribe(x => {
-    //   console.log(x);
-    //   console.log('file uploaded...');
-    // });
-
-    this.http.post('http://localhost:3000/api/upload', formData)
-    .subscribe(
-      // (r)=>{console.log('got r', r)}
-      data => {
-        console.log(data); 
-      },
-      error => {
-          console.log(error);
+     try {
+      const formData = new FormData();
+      for (const file of this.file) {
+        console.log(file);
+        if(file.type.indexOf('image') == -1){
+          console.log('not image');
+          
+          throw "The file you selected is not an image.";
+          
+        }
+        formData.append('files', file, file.name);
       }
-    );
-
-    
+      // console.log(formData.getAll('files')); 
+      // formData.append('name', this.file, this.file.name);
+      // console.log(formData);
+      // this.http.post('http://localhost:3000/api/upload', formData).subscribe(x => {
+      //   console.log(x);
+      //   console.log('file uploaded...');
+      // });
+      
+      this.http.post('http://localhost:3000/api/upload', formData)
+      .subscribe(
+        // (r)=>{console.log('got r', r)}
+        data => {
+          console.log(data); 
+          this.errorMessage = data['message'];
+        },
+        error => {
+            console.log(error);
+            this.errorMessage = error;
+        }
+      );
+     } catch(err) {
+      this.errorMessage = err;
+     }
+     
   }
 
   async fetchImage(){
