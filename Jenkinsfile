@@ -1,12 +1,8 @@
-node {  
-  stage("Prepare environment") {
-    docker.image('node:6').inside {
-      stage("Install Dependencies") {
-          sh "npm install"
-        }
-      stage("Test and validate") {
-          sh "npm test"
-      }
-    }
+node {
+  stage("Check Maven Version") {
+    sh "mvn --version"
+  }
+  stage("Check Node Version"){
+    sh "node --version"
   }
 }
