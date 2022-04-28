@@ -9,7 +9,7 @@
   "author": "Dominic Espiritu",
   "license": "ISC",
   "dependencies": {
-    "async": "^2.6.1",
+    "async": "^2.6.4",
     "aws-sdk": "^2.275.1",
     "bcrypt": "^3.0.0",
     "bcrypt-nodejs": "0.0.3",
